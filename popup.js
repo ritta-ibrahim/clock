@@ -2,6 +2,7 @@
 localStorage.setItem("format12", "true");
 document.getElementById("time").addEventListener("click", changeFormat12);
 document.getElementById('time').innerHTML = getTime();
+document.getElementById('date').innerHTML = getDate();
 window.setInterval(function () {
     document.getElementById('time').innerHTML = getTime();
 }, 1000)
@@ -13,8 +14,15 @@ function getTime() {
         hour12: format,
     });
 }
+
 function changeFormat12() {
     const format = localStorage.getItem('format12') == "true" ? "false" : "true";
     localStorage.setItem("format12", format);
     document.getElementById('time').innerHTML = getTime();
+}
+
+
+function getDate() {
+    const format = localStorage.getItem('format12') == "true" ? true : false;
+    return new Date().toLocaleDateString();
 }
